@@ -1,8 +1,8 @@
-package com.example.ecommerce.controllers;
+package com.example.ecommerce.products.controllers;
 
 
-import com.example.ecommerce.dto.ProductResponse;
-import com.example.ecommerce.services.ProductService;
+import com.example.ecommerce.products.dto.ProductResponse;
+import com.example.ecommerce.products.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

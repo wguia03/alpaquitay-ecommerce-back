@@ -1,5 +1,6 @@
-package com.example.ecommerce.models;
+package com.example.ecommerce.products.models;
 
+import com.example.ecommerce.users.models.Seller;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,10 +36,6 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private ProductCategory productCategory;
-
-    @OneToMany(mappedBy = "product")
-    @JsonIgnore
-    private List<CartItem> cartItems;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
