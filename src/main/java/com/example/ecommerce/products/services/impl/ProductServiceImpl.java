@@ -1,7 +1,7 @@
 package com.example.ecommerce.products.services.impl;
 
-import com.example.ecommerce.products.dto.ProductRequest;
-import com.example.ecommerce.products.dto.ProductResponse;
+import com.example.ecommerce.products.services.dto.ProductRequest;
+import com.example.ecommerce.products.services.dto.ProductResponse;
 import com.example.ecommerce.products.models.Product;
 import com.example.ecommerce.products.models.ProductCategory;
 import com.example.ecommerce.products.repositories.ProductCategoryRepository;
@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> findByName(String name) {
-        List<Product> products = productRepository.findAllByNameWithinIgnoreCase(name);
+        List<Product> products = productRepository.findAllByNameContainingIgnoreCase(name);
         return fromProductsToProductResponses(products);
     }
 

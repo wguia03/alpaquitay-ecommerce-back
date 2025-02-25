@@ -1,4 +1,4 @@
-package com.example.ecommerce.products.dto;
+package com.example.ecommerce.products.services.dto;
 
 import com.example.ecommerce.products.models.ProductCategory;
 import com.example.ecommerce.users.models.Seller;

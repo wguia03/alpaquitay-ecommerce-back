@@ -1,7 +1,7 @@
 package com.example.ecommerce.products.services;
 
-import com.example.ecommerce.products.dto.ProductRequest;
-import com.example.ecommerce.products.dto.ProductResponse;
+import com.example.ecommerce.products.services.dto.ProductRequest;
+import com.example.ecommerce.products.services.dto.ProductResponse;
 
 import java.util.List;
 
