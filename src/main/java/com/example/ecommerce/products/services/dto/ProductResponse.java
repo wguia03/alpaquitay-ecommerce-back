@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class ProductResponse {
-    private int id;
+    private Integer id;
     private String name;
     private String description;
-    private double price;
-    private int stock_quantity;
-    private String image_url;
-    private String category;
-    private int seller_id;
+    private Double price;
+    private Integer stockQuantity;
+    private String imageUrl;
+    private Integer productCategoryId;
+    private Integer sellerId;
 }

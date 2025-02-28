@@ -42,8 +42,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponse> findByCategory(String name) {
-        List<Product> products = productRepository.findByCategoryName(name);
+    public List<ProductResponse> findByCategoryId(Integer id) {
+        List<Product> products = productRepository.findByProductCategory_Id(id);
         return fromProductsToProductResponses(products);
     }
 
@@ -55,8 +55,8 @@ public class ProductServiceImpl implements ProductService {
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
                 .price(productRequest.getPrice())
-                .stock_quantity(productRequest.getStock_quantity())
-                .image_url(productRequest.getImage_url())
+                .stockQuantity(productRequest.getStockQuantity())
+                .imageUrl(productRequest.getImageUrl())
                 .productCategory(productCategory.orElseThrow())
                 .seller(seller.orElseThrow())
                 .build();
@@ -82,11 +82,11 @@ public class ProductServiceImpl implements ProductService {
         if(productRequest.getPrice() != null){
             product.get().setPrice(productRequest.getPrice());
         }
-        if(productRequest.getStock_quantity() != null){
-            product.get().setStock_quantity(productRequest.getStock_quantity());
+        if(productRequest.getStockQuantity() != null){
+            product.get().setStockQuantity(productRequest.getStockQuantity());
         }
-        if(!productRequest.getImage_url().isEmpty()){
-            product.get().setImage_url(productRequest.getImage_url());
+        if(!productRequest.getImageUrl().isEmpty()){
+            product.get().setImageUrl(productRequest.getImageUrl());
         }
         if(productRequest.getProductCategoryId() != null){
             Optional<ProductCategory> productCategory = productCategoryRepository.findById(productRequest.getProductCategoryId());
@@ -102,9 +102,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public int updateStock(Integer id, int quantity) {
         Product product = productRepository.findById(id).orElseThrow();
-        product.setStock_quantity(product.getStock_quantity() - quantity);
+        product.setStockQuantity(product.getStockQuantity() - quantity);
         productRepository.save(product);
-        return product.getStock_quantity();
+        return product.getStockQuantity();
     }
 
     @Override
@@ -118,10 +118,10 @@ public class ProductServiceImpl implements ProductService {
                 .name(product.getName())
                 .description(product.getDescription())
                 .price(product.getPrice())
-                .stock_quantity(product.getStock_quantity())
-                .image_url(product.getImage_url())
-                .category(product.getProductCategory().getName())
-                .seller_id(product.getSeller().getId())
+                .stockQuantity(product.getStockQuantity())
+                .imageUrl(product.getImageUrl())
+                .productCategoryId(product.getProductCategory().getId())
+                .sellerId(product.getSeller().getId())
                 .build();
     }
 

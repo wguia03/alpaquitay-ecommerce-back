@@ -9,7 +9,7 @@ public interface ProductService {
     List<ProductResponse> findAll();
     ProductResponse findById(Integer id);
     List<ProductResponse> findByName(String name);
-    List<ProductResponse> findByCategory(String name);
+    List<ProductResponse> findByCategoryId(Integer id);
     ProductResponse save(ProductRequest product);
     ProductResponse update(Integer id, ProductRequest product);
     int updateStock(Integer id, int quantity);

@@ -35,22 +35,24 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         return fromProductCategoryToProductCategoryResponse(productCategoryRepository.save(productCategory));
     }
 
-    private ProductCategoryResponse fromProductCategoryToProductCategoryResponse(ProductCategory save) {
-        return ProductCategoryResponse.builder()
-                .id(save.getId())
-                .name(save.getName())
-                .parentCategoryId(save.getParentCategory().getId())
-                .build();
+    private ProductCategoryResponse fromProductCategoryToProductCategoryResponse(ProductCategory category) {
+        if(category.getParentCategory() == null) {
+            return ProductCategoryResponse.builder()
+                    .id(category.getId())
+                    .name(category.getName())
+                    .build();
+        } else {
+            return ProductCategoryResponse.builder()
+                    .id(category.getId())
+                    .name(category.getName())
+                    .parentCategoryId(category.getParentCategory().getId())
+                    .build();
+        }
     }
 
     @Override
     public ProductCategoryResponse getProductCategoryById(int id) {
         return fromProductCategoryToProductCategoryResponse(productCategoryRepository.findById(id).get());
-    }
-
-    @Override
-    public ProductCategoryResponse getProductCategoryByName(String name) {
-        return fromProductCategoryToProductCategoryResponse(productCategoryRepository.findByName(name));
     }
 
     @Override

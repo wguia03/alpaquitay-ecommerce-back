@@ -16,7 +16,7 @@ public class ProductCategoryController {
 
     private final ProductCategoryService productCategoryService;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<ProductCategoryResponse>> getAllProductCategories() {
         return ResponseEntity.ok(productCategoryService.getAllProductCategories());
     }
@@ -26,14 +26,9 @@ public class ProductCategoryController {
         return ResponseEntity.ok(productCategoryService.getProductCategoryById(id));
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity<ProductCategoryResponse> getProductCategoryByName(@PathVariable String name) {
-        return ResponseEntity.ok(productCategoryService.getProductCategoryByName(name));
-    }
-
     @PostMapping("/save")
     public ResponseEntity<ProductCategoryResponse> saveProductCategory(@RequestBody ProductCategoryRequest productCategory) {
-        return ResponseEntity.ok(productCategoryService.createProductCategory(productCategory));
+        return ResponseEntity.created(null).body(productCategoryService.createProductCategory(productCategory));
     }
 
     @PutMapping("/update/{id}")

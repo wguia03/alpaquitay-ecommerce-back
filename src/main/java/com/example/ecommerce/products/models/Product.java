@@ -29,9 +29,9 @@ public class Product {
     private double price;
 
     @Column(nullable = false)
-    private int stock_quantity;
+    private int stockQuantity;
 
-    private String image_url;
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

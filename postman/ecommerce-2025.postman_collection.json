@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "d64be333-f096-49fc-ad7d-65effce930d7",
+		"name": "ecommerce-2025",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33025870"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"No debe ser nulo\", function () {\r",
+									"    pm.expect(response).not.null;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/all",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Debe devolver el ID del producto\", function () {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Los datos deben coincidir con la solicitud\", function () {\r",
+									"    pm.expect(response.name).to.equal(pm.environment.get(\"name\"));\r",
+									"    pm.expect(response.description).to.equal(pm.environment.get(\"description\"));\r",
+									"    pm.expect(response.price).to.equal(pm.environment.get(\"price\"));\r",
+									"    pm.expect(response.stockQuantity).to.equal(pm.environment.get(\"stockQuantity\"));\r",
+									"    pm.expect(response.imageUrl).to.equal(pm.environment.get(\"imageUrl\"));\r",
+									"    pm.expect(response.productCategoryId).to.equal(pm.environment.get(\"productCategoryId\"));\r",
+									"    pm.expect(response.sellerId).to.equal(pm.environment.get(\"sellerId\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"name\", \"Pruebas4\");\r",
+									"pm.environment.set(\"description\", \"Pruebas4\");\r",
+									"pm.environment.set(\"price\", 20);\r",
+									"pm.environment.set(\"stockQuantity\", 100);\r",
+									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas4\");\r",
+									"pm.environment.set(\"productCategoryId\", 3);\r",
+									"pm.environment.set(\"sellerId\", 1);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"price\": {{price}},\r\n    \"stockQuantity\": {{stockQuantity}},\r\n    \"imageUrl\": \"{{imageUrl}}\",\r\n    \"productCategoryId\": {{productCategoryId}},\r\n    \"sellerId\": {{sellerId}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_dev}}/products/save",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Debe devolver el ID del producto\", function () {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Los datos deben coincidir con la solicitud\", function () {\r",
+									"    pm.expect(response.name).to.equal(pm.environment.get(\"name\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"name\", \"Pruebas\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_dev}}/categories/save",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"categories",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Debe devolver el ID del producto\", function () {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Los datos deben coincidir con la solicitud\", function () {\r",
+									"    pm.expect(response.name).to.equal(pm.environment.get(\"name\"));\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"name\", \"Textiles\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_dev}}/categories/update/5",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"categories",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Debe devolver el ID del producto\", function () {\r",
+									"    pm.expect(response).to.have.property(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"name\", \"Pruebas5\");\r",
+									"pm.environment.set(\"description\", \"Pruebas5\");\r",
+									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas5\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"price\": {{price}},\r\n    \"stockQuantity\": {{stockQuantity}},\r\n    \"imageUrl\": \"{{imageUrl}}\",\r\n    \"productCategoryId\": {{productCategoryId}},\r\n    \"sellerId\": {{sellerId}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_dev}}/products/update/5",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product Stock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La respuesta es un entero\", function () {\r",
+									"    let response = pm.response.text();\r",
+									"    pm.expect(response).to.match(/^\\d+$/); // Verifica si es un número entero\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/updateStock/5/10",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"updateStock",
+								"5",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"No debe ser nulo\", function () {\r",
+									"    pm.expect(response).not.null;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/categories/all",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"categories",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"No debe ser nulo\", function () {\r",
+									"    pm.expect(response).not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validar que los campos no sean nulos excepto parentCategoryId\", function () {\r",
+									"    let response = pm.response.json();\r",
+									"\r",
+									"    Object.keys(response).forEach(key => {\r",
+									"        if (key !== \"parentCategoryId\") {\r",
+									"            pm.expect(response[key]).to.not.be.null;\r",
+									"        }\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/categories/3",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"categories",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"No debe ser nulo\", function () {\r",
+									"    pm.expect(response).not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validar que los campos no sean nulos\", function () {\r",
+									"    let response = pm.response.json();\r",
+									"\r",
+									"    Object.keys(response).forEach(key => {\r",
+									"        pm.expect(response[key]).to.not.be.null;\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/1",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/name/pruebas1",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"name",
+								"pruebas1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by Category Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Debe devolver estado 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/category/3",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"    pm.expect(pm.response.text()).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/categories/delete/7",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"categories",
+								"delete",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"    pm.expect(pm.response.text()).to.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_dev}}/products/delete/10",
+							"host": [
+								"{{base_url_dev}}"
+							],
+							"path": [
+								"products",
+								"delete",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
