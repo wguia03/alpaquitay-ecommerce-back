@@ -93,11 +93,11 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"name\", \"Pruebas4\");\r",
-									"pm.environment.set(\"description\", \"Pruebas4\");\r",
+									"pm.environment.set(\"name\", \"Pruebas5\");\r",
+									"pm.environment.set(\"description\", \"Pruebas5\");\r",
 									"pm.environment.set(\"price\", 20);\r",
 									"pm.environment.set(\"stockQuantity\", 100);\r",
-									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas4\");\r",
+									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas5\");\r",
 									"pm.environment.set(\"productCategoryId\", 3);\r",
 									"pm.environment.set(\"sellerId\", 1);"
 								],
