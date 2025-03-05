@@ -17,14 +17,14 @@
 1. [Propósito](#propósito)
 2. [Vista General de Arquitectura](#vista-general-de-arquitectura)
 3. [Principales Servicios REST y Funcionalidades](#principales-servicios-rest-y-funcionalidades)
-   - [📦 Módulo: Product Controller](#-módulo-product-controller)
-   - [🏷️ Módulo: Product Category Controller](#-módulo-product-category-controller)
-4. [📄 Modelos: Entidades y Agregados](#-modelos-entidades-y-agregados)
+   - [Módulo: Product Controller](#módulo-product-controller)
+   - [Módulo: Product Category Controller](#módulo-product-category-controller)
+4. [Modelos: Entidades y Agregados](#modelos-entidades-y-agregados)
 5. [Prácticas de Desarrollo](#prácticas-de-desarrollo)
-   - [Construcción Automática](#-construcción-automática)
-   - [Análisis Estático](#-análisis-estático)
-   - [Pruebas Unitarias](#-pruebas-unitarias)
-   - [Pruebas de APIs](#-pruebas-de-apis)
+   - [Construcción Automática](#construcción-automática)
+   - [Análisis Estático](#análisis-estático)
+   - [Pruebas Unitarias](#pruebas-unitarias)
+   - [Pruebas de APIs](#pruebas-de-apis)
 6. [Gestión de Proyecto: Trello](#gestión-de-proyecto-trello)
 
 
@@ -36,10 +36,10 @@ Desarrollar un backend escalable y seguro para un ecommerce dirigido al sector d
 
 ### Principales Servicios REST y Funcionalidades ###
 
-#### 📦 Módulo: **Product Controller** ####
+####  Módulo: **Product Controller** ####
 **Propósito**: Gestión de productos en el sistema.
 
-#### 🔹 Operaciones disponibles: ####
+####  Operaciones disponibles: ####
 | Método  | URL | Parámetros |
 |---------|--------------------------------|-------------------------|
 | **PUT** | `/api/products/updateStock/{id}/{quantity}` | `id` (identificador del producto), `quantity` (cantidad a actualizar) |
@@ -53,10 +53,10 @@ Desarrollar un backend escalable y seguro para un ecommerce dirigido al sector d
 
 ---
 
-#### 🏷️ Módulo: **Product Category Controller** ###
+####  Módulo: **Product Category Controller** ###
 **Propósito**: Gestión de categorías de productos.
 
-#### 🔹 Operaciones disponibles: ####
+#### Operaciones disponibles: ####
 | Método  | URL | Parámetros |
 |---------|--------------------------------|-------------------------|
 | **PUT** | `/api/categories/update/{id}` | `id` (identificador de la categoría) |
@@ -67,7 +67,7 @@ Desarrollar un backend escalable y seguro para un ecommerce dirigido al sector d
 
 ---
 
-#### 📄 Modelos: Entidades y Agregados ####
+####  Modelos: Entidades y Agregados ####
 Los siguientes modelos son utilizados en los servicios REST:
 
 - **`ProductRequest`**: Representa la solicitud para crear o actualizar un producto.
