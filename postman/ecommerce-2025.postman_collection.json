@@ -97,6 +97,7 @@
 									"pm.environment.set(\"price\", 20);\r",
 									"pm.environment.set(\"stockQuantity\", 100);\r",
 									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas5\");\r",
+									"pm.environment.set(\"productCategoryId\", 3)\r",
 									"pm.environment.set(\"sellerId\", 1);"
 								],
 								"type": "text/javascript",
@@ -293,7 +294,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"price\": {{price}},\r\n    \"stockQuantity\": {{stockQuantity}},\r\n    \"imageUrl\": \"{{imageUrl}}\",\r\n    \"productCategoryId\": {{productCategoryId}},\r\n    \"sellerId\": {{sellerId}}\r\n}",
+							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"description\": \"{{description}}\",\r\n    \"imageUrl\": \"{{imageUrl}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
