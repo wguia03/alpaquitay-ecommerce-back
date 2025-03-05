@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'JAVA'         
+        maven 'maven'      
+    }
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+        NEWMAN = "C:/Users/balce/AppData/Roaming/npm/newman.cmd"
+    }
+    
+    stages {
+        
+        stage("Clonar Repositorio") {
+            steps {
+                git branch: 'prod',changelog:false, poll:false,url: 'https://github.com/wguia03/alpaquitay-ecommerce-back.git'
+                
+            }
+        }
+
+        stage("Compilar Proyecto") {
+            steps {
+                bat "mvn -f pom.xml clean compile" // Compila el módulo principal
+            }
+        }
+        stage("Ejecutar Análisis con SonarQube") {
+            steps {
+                bat """
+                $SCANNER_HOME/bin/sonar-scanner \
+                -Dsonar.projectKey=Alpakitay_b \
+                -Dsonar.projectName=Alpakitay_b \
+                -Dsonar.sources=src/main/java \
+                -Dsonar.java.binaries=target/classes \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=squ_cb720149604dbf8e6e32d8aa9e6c77aa1903a8ca
+                """
+            }
+        }
+        stage("Ejecutar Pruebas Unitarias") {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage("Ejecutar Pruebas de API - Postman") {
+            steps {
+              bat  "${NEWMAN} run postman/ecommerce-2025.postman_collection.json -e postman/ecommerce-dev.postman_environment.json"            }
+        }
+        
+    }
+    post {
+        always {
+            cleanWs() // Limpia el workspace después de cada ejecución
+        }
+    }
+    
+}
