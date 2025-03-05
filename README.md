@@ -13,6 +13,21 @@
 - Cumpa Pareja, Santiago
 - Tupac Agüero, Kevin
 
+## Índice
+1. [Propósito](#propósito)
+2. [Vista General de Arquitectura](#vista-general-de-arquitectura)
+3. [Principales Servicios REST y Funcionalidades](#principales-servicios-rest-y-funcionalidades)
+   - [📦 Módulo: Product Controller](#-módulo-product-controller)
+   - [🏷️ Módulo: Product Category Controller](#-módulo-product-category-controller)
+4. [📄 Modelos: Entidades y Agregados](#-modelos-entidades-y-agregados)
+5. [Prácticas de Desarrollo](#prácticas-de-desarrollo)
+   - [Construcción Automática](#-construcción-automática)
+   - [Análisis Estático](#-análisis-estático)
+   - [Pruebas Unitarias](#-pruebas-unitarias)
+   - [Pruebas de APIs](#-pruebas-de-apis)
+6. [Gestión de Proyecto: Trello](#gestión-de-proyecto-trello)
+
+
 ### Propósito ###
 Desarrollar un backend escalable y seguro para un ecommerce dirigido al sector de artesanos, facilitando la gestión de productos, pedidos y pagos, optimizando la visibilidad y comercialización de sus creaciones mediante una plataforma eficiente y accesible.
 
@@ -92,4 +107,11 @@ El análisis estático fue realizado para garantizar la calidad, seguridad y man
    </div>
 <div align="center">
       <img src="https://github.com/wguia03/alpaquitay-ecommerce-back/blob/dev/Jenkins/Pruebas%20Unitarias%20-%202.png" alt="api2" width="600">
+   </div>
+
+### Gestión de Proyecto: Trello ###
+- Para este proyecto, Trello se utiliza para organizar las tareas de desarrollo, pruebas y documentación. Se han creado tableros con listas para cada fase del proyecto, permitiendo un seguimiento claro del progreso, asignación de responsabilidades y control de pendientes de manera ágil y colaborativa.
+- Link: https://trello.com/b/RrAADVMk/sistema-de-ventas-de-productos-artesanales 
+  <div align="center">
+      <img src="https://github.com/wguia03/alpaquitay-ecommerce-back/blob/main/Trello/Trello.png" alt="trello" >
    </div>
