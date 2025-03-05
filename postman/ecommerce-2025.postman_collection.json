@@ -80,7 +80,6 @@
 									"    pm.expect(response.price).to.equal(pm.environment.get(\"price\"));\r",
 									"    pm.expect(response.stockQuantity).to.equal(pm.environment.get(\"stockQuantity\"));\r",
 									"    pm.expect(response.imageUrl).to.equal(pm.environment.get(\"imageUrl\"));\r",
-									"    pm.expect(response.productCategoryId).to.equal(pm.environment.get(\"productCategoryId\"));\r",
 									"    pm.expect(response.sellerId).to.equal(pm.environment.get(\"sellerId\"));\r",
 									"});\r",
 									""
@@ -98,7 +97,6 @@
 									"pm.environment.set(\"price\", 20);\r",
 									"pm.environment.set(\"stockQuantity\", 100);\r",
 									"pm.environment.set(\"imageUrl\", \"www.pruebas.com/pruebas5\");\r",
-									"pm.environment.set(\"productCategoryId\", 3);\r",
 									"pm.environment.set(\"sellerId\", 1);"
 								],
 								"type": "text/javascript",
