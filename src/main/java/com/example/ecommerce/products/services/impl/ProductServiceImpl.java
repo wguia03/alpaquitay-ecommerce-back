@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(product.getPrice())
                 .stockQuantity(product.getStockQuantity())
                 .imageUrl(product.getImageUrl())
-                .productCategoryId(product.getProductCategory().getId())
+                .productCategory(product.getProductCategory().getName())
                 .sellerId(product.getSeller().getId())
                 .build();
     }
